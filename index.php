@@ -51,7 +51,7 @@ function visa()
 <div id="php" class="stil">
 	<p>Fulfilter med php</p>
 		<form id="form1" name="form1" method="post" action="gymnasiearbete/index.php">
-		<textarea rows="4" cols="35"name="test"></textarea>
+		<textarea rows="4" cols="35"name="HelaTexten"></textarea>
 		<br/>
 		<input name="Filtrera" type="submit" />
 	</form>
