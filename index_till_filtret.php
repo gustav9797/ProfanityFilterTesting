@@ -4,8 +4,8 @@
 	use Snipe\BanBuilder\CensorWords;
 	$censor = new CensorWords;
 	$censor->setReplaceChar("*");
-	if(!empty($_POST["test"]))
-		$input = $_POST["test"];
+	if(!empty($_POST["HelaTexten"]))
+		$input = $_POST["HelaTexten"];
 	else
 		$input="This is a fucking bitch a$$ sh1t.";
 	$string = $censor->censorString($input);
