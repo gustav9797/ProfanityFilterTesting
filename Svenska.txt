@@ -1,6 +1,6 @@
-djävla
-djävlar
-djävlars
+ï»¿djÃ¤vla
+djÃ¤vlar
+djÃ¤vlars
 fan
 fanken
 fitt
@@ -10,7 +10,7 @@ fittans
 fittor
 fittorna
 fittornas
-för guds skull
+fÃ¶r guds skull
 nigga
 helvete
 helvetes
@@ -18,12 +18,13 @@ helvetet
 helvetes
 helveten
 helvetens
-jädra
-jädrar
-jädrans
-jävla
-jävlar
-jävlars
+jÃ¤dra
+jÃ¤drar
+jÃ¤drans
+jÃ¤vla
+jÃ¤vlar
+jÃ¤vlars
+jÃ¤vel
 satan
 satans
 skit
@@ -58,4 +59,4 @@ negrernas
 zigenare
 zigenaren
 zigenarna
-
+bÃ¶g

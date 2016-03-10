@@ -4,12 +4,13 @@
 		
 		private $censorChar = "*";
 		
-		private $badwords = array("kuk", "fitta", "bög");
+		private $badwords = array();
 		
 		private $wordlist = array();
 		
 		public function initialize() {
-			$this->wordlist = file("ordlista.txt");
+			$this->badwords = file("Svenska.txt", FILE_IGNORE_NEW_LINES);
+			$this->wordlist = file("ordlista.txt", FILE_IGNORE_NEW_LINES);
 		}
 		
 		public function run($text) {
@@ -19,7 +20,7 @@
 			foreach($words as $word) {
 				$outputWord = $word;
 				if(in_array($word, $this->badwords)) {
-					echo(" censored \"" . $word . "\"");
+					//echo(" censored \"" . $word . "\"");
 					$outputWord = $this->censorString($word);
 				} else if(!in_array($word, $this->wordlist)) {
 					//TODO: översätt från leet translator till svenska
@@ -30,7 +31,7 @@
 						if(mb_strpos($word, $badword) !== false) {
 							//echo(" censored \"" . $word . "\"");
 							$outputWord = $this->censorStringInString($badword, $word);
-
+							
 						}
 					}
 				}
