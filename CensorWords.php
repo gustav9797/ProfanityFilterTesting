@@ -1,7 +1,5 @@
 <?php
 
-namespace Snipe\BanBuilder;
-
 class CensorWords
 {
 	public $badwords;

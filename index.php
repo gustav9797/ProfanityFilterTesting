@@ -54,9 +54,7 @@ input
 </body>
 </html>
 <?php
-	require_once __DIR__ . '/vendor/autoload.php';
-
-	use Snipe\BanBuilder\CensorWords;
+	include("CensorWords.php");
 	$censor = new CensorWords;
 	$censor->setReplaceChar("*");
 	if(!empty($_POST["HelaTexten"]))
