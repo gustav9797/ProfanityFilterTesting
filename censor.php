@@ -9,6 +9,13 @@
 		private $wordlist = array();
 		
 		public function initialize() {
+			header('Content-Type: text/html; charset=UTF-8');
+			
+			mb_internal_encoding('UTF-8'); 
+			mb_http_output('UTF-8'); 
+			mb_http_input('UTF-8'); 
+			mb_regex_encoding('UTF-8'); 
+
 			$this->badwords = file("Svenska.txt", FILE_IGNORE_NEW_LINES);
 			$this->wordlist = file("ordlista.txt", FILE_IGNORE_NEW_LINES);
 		}
@@ -28,11 +35,16 @@
 					//TODO: om finns med i lista med fula ord, filtrera bort
 					//echo(" |testing " . $lowerWord . "| ");
 					$current = $lowerWord;
+					//echo(" |testing1 " . $lowerWord . "| ");
+					//echo(" |testing2 " . $current . "| ");
 					foreach($this->badwords as $badword) {
 						//echo(" |testing " . $badword . " in " . $word . "| ");
+						//echo(" also " . $current . " with badword " . $badword);
 						if(mb_strpos($lowerWord, $badword) !== false) {
-							//echo(" censored \"" . $word . "\"");
+							//echo(" censored \"" . $current . "\"");
+							//echo(" before" . $current);
 							$current = $this->censorStringInString($badword, $current);
+							//echo(" after" . $current);
 
 						}
 					}
@@ -56,14 +68,27 @@
 		}
 		
 		private function censorStringInString($string, $mother) {
+			//echo(" string \"" . $string . "\"");
+			//echo(" mother \"" . $mother . "\"");
 			$output = $mother;
+			//echo(" in " . $mother);
 			$pos = mb_strpos($mother, $string);
 			if(is_numeric($pos)) {
-				for($i = $pos; $i < strlen($string) && $i < strlen($mother); ++$i)
-					$output{$i} = $this->censorChar;
+				for($i = $pos; $i < mb_strlen($string) + $pos; ++$i) {
+					//echo "asdo " . $i;
+					//echo "length of \"" . $string . "\": " . mb_strlen($string);
+					//$output{$i} = "*";
+					$output = $this->mb_substr_replace($output, $this->censorChar, $i, $i + 1);
+				}
 			} else 
 				echo("There was an issue with the word \"" . $mother . "\"");
+			//echo(" out " . $output);
 			return $output;
 		}
+		
+		private function mb_substr_replace($output, $replace, $posOpen, $posClose) { 
+			//echo " posopen " . $posOpen . " posClose " . $posClose;
+        	return mb_substr($output, 0, $posOpen) . $replace . mb_substr($output, $posClose); 
+    	} 
 	}
 ?>
