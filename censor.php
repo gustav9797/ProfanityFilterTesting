@@ -19,21 +19,24 @@
 			$words = explode(" ", $text);
 			foreach($words as $word) {
 				$outputWord = $word;
-				if(in_array($word, $this->badwords)) {
+				$lowerWord = strtolower($word);
+				if(in_array($lowerWord, $this->badwords)) {
 					//echo(" censored \"" . $word . "\"");
 					$outputWord = $this->censorString($word);
-				} else if(!in_array($word, $this->wordlist)) {
+				} else if(!in_array($lowerWord, $this->wordlist)) {
 					//TODO: översätt från leet translator till svenska
 					//TODO: om finns med i lista med fula ord, filtrera bort
 					//echo(" |testing " . $word . "| ");
+					$current = $lowerWord;
 					foreach($this->badwords as $badword) {
 						//echo(" |testing " . $badword . " in " . $word . "| ");
-						if(mb_strpos($word, $badword) !== false) {
-							//echo(" censored \"" . $word . "\"");
-							$outputWord = $this->censorStringInString($badword, $word);
-							
+						if(mb_strpos($lowerWord, $badword) !== false) {
+							echo(" censored \"" . $word . "\"");
+							$current = $this->censorStringInString($badword, $current);
+
 						}
 					}
+					$outputWord = $current;
 				}
 				
 				array_push($output, $outputWord);
@@ -47,8 +50,7 @@
 		}
 		
 		private function censorString($string) {
-			$censoredWord = preg_replace('/.*/', '*', $string);
-			return $censoredWord;
+			return $this->censorStringInString($string, $string);
 		}
 		
 		private function censorStringInString($string, $mother) {
