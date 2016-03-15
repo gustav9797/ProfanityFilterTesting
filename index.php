@@ -43,7 +43,7 @@
 	<div id="php" class="stil">
 		<p>Fulfilter</p>
 		<form id="form1" name="form1" method="post" action="index.php" enctype="multipart/form-data">
-			<textarea rows="6" cols="35"name="HelaTexten" draggable="false" ></textarea>
+			<textarea rows="6" cols="35"name="HelaTexten" draggable="false" ><?php  if(isset($_POST["HelaTexten"]))echo $_POST["HelaTexten"]; ?></textarea>
 			<br/>
 			<input name="Filtrera" type="submit" />
 		</form>
