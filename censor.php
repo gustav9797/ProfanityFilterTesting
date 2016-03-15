@@ -40,7 +40,7 @@
 					foreach($this->badwords as $badword) {
 						//echo(" |testing " . $badword . " in " . $word . "| ");
 						//echo(" also " . $current . " with badword " . $badword);
-						if(mb_strpos($lowerWord, $badword) !== false) {
+						if(mb_strpos($current, $badword) !== false) {
 							//echo(" censored \"" . $current . "\"");
 							//echo(" before" . $current);
 							$current = $this->censorStringInString($badword, $current);
@@ -81,7 +81,7 @@
 					$output = $this->mb_substr_replace($output, $this->censorChar, $i, $i + 1);
 				}
 			} else 
-				echo("There was an issue with the word \"" . $mother . "\"");
+				echo("There was an issue with the word \"" . $mother . "\" ");
 			//echo(" out " . $output);
 			return $output;
 		}
