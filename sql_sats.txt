@@ -1,1 +1,3 @@
-CREATE TABLE `gymnasiearbete`.`Inlagg` ( `Text` VARCHAR(10000) NOT NULL , `ID` INT NOT NULL AUTO_INCREMENT , `User` VARCHAR NOT NULL , `Fulhet` INT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+
+//must have a database that is called gymnasiearbete
+CREATE TABLE `gymnasiearbete`.`Inlagg` ( `Text` VARCHAR(10000) NOT NULL , `ID` INT NOT NULL AUTO_INCREMENT , `User` VARCHAR(10000) NOT NULL , `Fulhet` INT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;

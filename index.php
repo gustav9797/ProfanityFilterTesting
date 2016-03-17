@@ -69,14 +69,13 @@
 			unset($_POST);
 			if(1==0)
 			{
-				var int;
 				$conn=new PDO("mysql:host=127.0.0.1;dbname=gymnasiearbete;charset=UTF8","root","");
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				$sql="INSERT INTO `inlagg`(`Text`, `Fulhet`) VALUES ($string,int);
-				$stmt=$conn->prepare($sql);
-				$stmt->execute();
-				
-			}
+				$sql="INSERT INTO 'inlagg'('Text', 'Fulhet') VALUES (\"$string\",0)";
+                echo $sql;
+				$conn->exec($sql);
+            }
+			
 		}
 	?>
 </body>
