@@ -52,11 +52,12 @@
 			$this->leet_replace = $leet_replace;
 		}
 		
-		public function run($text) {
+		public function run($text, $censor = false) {
 			$output = array();
 			
 			$words = explode(" ", $text);
 			foreach($words as $word) {
+				$badness = 0;
 				$outputWord = $word;
 				//$lowerWord = strtolower(preg_replace("/[^A-Za-z0-9åäöÅÄÖ ]/", '', $word));
 				$lowerWord = $word;
@@ -68,6 +69,7 @@
 				//$lowerWord = str_ireplace(array_values($this->leet_replace), array_keys($this->leet_replace), $word);
 				//echo "<br/>" . $lowerWord;
 				if(in_array($lowerWord, $this->badwords)) {
+					$badness = 2;
 					//echo(" censored \"" . $word . "\"");
 					$outputWord = $this->censorString($word);
 				} else if(!in_array($lowerWord, $this->wordlist)) {
@@ -85,21 +87,31 @@
 							//echo(" before" . $current);
 							$current = $this->censorStringInString($badword, $current);
 							//echo(" after" . $current);
+							$badness = 1;
 
 						}
 					}
 					if(strcmp($current, $lowerWord) != 0)
 						$outputWord = $current;
 				}
-				
-				array_push($output, $outputWord);
+				if(!$censor) {
+					if(!array_key_exists($word, $output))
+						$output[$word] = array();
+					array_push($output[$word], $badness);
+				} else
+					array_push($output, $outputWord);
 			}
 			//echo("<br>");
-			$outputString = "";
-			foreach($output as $outputWord) {
-				$outputString .= ($outputWord . " ");
+			if(!$censor)
+				return $output;
+			else {
+				$outputString = "";
+				foreach($output as $outputWord) {
+					$outputString .= ($outputWord . " ");
+				}
+	
+				return $outputString;
 			}
-			return $outputString;
 			//TODO: remove empty space at end of output string
 		}
 		

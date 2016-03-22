@@ -4,7 +4,6 @@
 		body
 		{
 			background-color:black;
-			color:white;
 			background:url(dark_background_line_surface_65896_1920x1080.jpg);
 		}
 		.stil
@@ -74,17 +73,28 @@
 		{
 			echo "<div class='text'>";
 			$input = $_POST["HelaTexten"];
-			$string = $censor->run($input);
-			//$string = $censor->censorString($input);
-			//echo "Original: " . $string["orig"] . "<br><br><br>";
-			//echo "Clean: " . $string["clean"] . "<br><br><br><br>";
-			echo "Clean: " . $string . "<br><br><br><br>";
+			echo "<br>";
+			
+			/*$string = $censor->run($input, true);
+			echo "Clean: " . $string";*/
+			
+			$output = $censor->run($input, false);
+			$highest = 0;
+			foreach($output as $wordarray) {
+				foreach($wordarray as $badness) {
+					if($badness > $highest)
+						$highest = $badness;
+				}
+			}
+			echo "Badness: " . $highest;
+			
+			echo "<br><br>";
 			echo "</div>";
 			unset($_POST);
             try {
 				$conn=new PDO("mysql:host=127.0.0.1;dbname=gymnasiearbete;charset=UTF8","root","");
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`,`Filtrerad`) VALUES ('$input',0,'$string')";
+                $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`,`Filtrerad`) VALUES ('$input','$highest','$string')";
 				$conn->exec($sql);
             }
 			catch(PDOException $e)
