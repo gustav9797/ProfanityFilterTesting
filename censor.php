@@ -80,7 +80,7 @@
 					foreach($this->badwords as $badword) {
 						//echo(" |testing " . $badword . " in " . $word . "| ");
 						//echo(" also " . $current . " with badword " . $badword);
-						if(mb_strpos($current, $badword) !== false) {
+						while(mb_strpos($current, $badword) !== false) {
 							//echo(" censored \"" . $current . "\"");
 							//echo(" before" . $current);
 							$current = $this->censorStringInString($badword, $current);
