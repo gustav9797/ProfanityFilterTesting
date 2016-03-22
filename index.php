@@ -3,32 +3,36 @@
 		<style type="text/css">
 		body
 		{
+			background-color:black;
 			background:url(dark_background_line_surface_65896_1920x1080.jpg);
 		}
 		.stil
 		{
-				background-color:pink;
-				width:278px;
-				height:auto;
-				margin-top:50px;
-				margin-left:auto; 
-				margin-right:auto;
-				border-radius:10px;
-				box-shadow:0px 0px 25px #666;
+			background-color:black;
+			color:white;
+			width:278px;
+			height:auto;
+			margin-top:50px;
+			margin-left:auto; 
+			margin-right:auto;
+			border-radius:10px;
+			box-shadow:0px 0px 25px #666;
 		}
 		.text
 		{
-				background-color:pink;
-				width:auto;
-				height:auto;
-				margin-top:50px;
-				margin-left:100px; 
-				margin-right:100px;
-				border-radius:10px;
-				box-shadow:0px 0px 25px #666;
+			text-align:center;
+			background-color:black;
+			color:white;
+			width:auto;
+			height:auto;
+			margin-top:50px;
+			margin-left:100px; 
+			margin-right:100px;
+			border-radius:10px;
+			box-shadow:0px 0px 25px #666;
 		}
 		textarea 
-		{
+		{	
 			resize: none;
 			margin-left:5px;
 			border-radius:10px;
