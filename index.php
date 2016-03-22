@@ -14,6 +14,7 @@
 				margin-left:auto; 
 				margin-right:auto;
 				border-radius:10px;
+				box-shadow:0px 0px 25px #666;
 		}
 		.text
 		{
@@ -24,6 +25,7 @@
 				margin-left:100px; 
 				margin-right:100px;
 				border-radius:10px;
+				box-shadow:0px 0px 25px #666;
 		}
 		textarea 
 		{
