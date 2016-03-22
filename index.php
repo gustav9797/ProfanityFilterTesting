@@ -1,6 +1,10 @@
 ﻿<html>
 	<head>
 		<style type="text/css">
+		body
+		{
+			background:url(dark_background_line_surface_65896_1920x1080.jpg);
+		}
 		.stil
 		{
 				background-color:pink;
@@ -9,6 +13,7 @@
 				margin-top:50px;
 				margin-left:auto; 
 				margin-right:auto;
+				border-radius:10px;
 		}
 		.text
 		{
@@ -18,11 +23,13 @@
 				margin-top:50px;
 				margin-left:100px; 
 				margin-right:100px;
+				border-radius:10px;
 		}
 		textarea 
 		{
 			resize: none;
 			margin-left:5px;
+			border-radius:10px;
 		}
 		p
 		{
@@ -68,10 +75,9 @@
 			echo "</div>";
 			unset($_POST);
             try {
-				$orginal=$_POST["HelaTexten"];
 				$conn=new PDO("mysql:host=127.0.0.1;dbname=gymnasiearbete;charset=UTF8","root","");
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`,`Filtrerad`) VALUES ('$orginal',0,$string)";
+                $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`,`Filtrerad`) VALUES ('$input',0,'$string')";
 				$conn->exec($sql);
             }
 			catch(PDOException $e)
