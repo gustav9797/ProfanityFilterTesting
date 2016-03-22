@@ -92,10 +92,17 @@
 			echo "</div>";
 			unset($_POST);
             try {
+				if($highest == 2)
+				{
+					exit;
+				}
+				else
+				{
 				$conn=new PDO("mysql:host=127.0.0.1;dbname=gymnasiearbete;charset=UTF8","root","");
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`,`Filtrerad`) VALUES ('$input','$highest','$string')";
 				$conn->exec($sql);
+				}
             }
 			catch(PDOException $e)
             {
