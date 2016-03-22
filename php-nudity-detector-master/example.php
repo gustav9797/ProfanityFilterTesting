@@ -1,4 +1,5 @@
 <?php
+$int = 1;
 
 include __DIR__ . '/lib/Autoloader.php';
 
