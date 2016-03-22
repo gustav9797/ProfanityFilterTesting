@@ -68,9 +68,10 @@
 			echo "</div>";
 			unset($_POST);
             try {
+				$orginal=$_POST["HelaTexten"];
 				$conn=new PDO("mysql:host=127.0.0.1;dbname=gymnasiearbete;charset=UTF8","root","");
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`) VALUES ('$string',0)";
+                $sql="INSERT INTO `inlagg`(`Text`, `Fulhet`,`Filtrerad`) VALUES ('$orginal',0,$string)";
 				$conn->exec($sql);
             }
 			catch(PDOException $e)
