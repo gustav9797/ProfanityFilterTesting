@@ -5,7 +5,6 @@
 		{
 			background-color:black;
 			color:white;
-			text-align:center;
 			background:url(dark_background_line_surface_65896_1920x1080.jpg);
 		}
 		.stil
