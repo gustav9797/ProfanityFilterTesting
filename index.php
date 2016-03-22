@@ -75,8 +75,8 @@
 			$input = $_POST["HelaTexten"];
 			echo "<br>";
 			
-			/*$string = $censor->run($input, true);
-			echo "Clean: " . $string";*/
+			$string = $censor->run($input, true);
+			echo "Clean: " . $string . "<br>";
 			
 			$output = $censor->run($input, false);
 			$highest = 0;
