@@ -12,6 +12,7 @@ USE `gymnasiearbete`;
 
 CREATE TABLE `inlagg` (
   `Text` varchar(10000) NOT NULL,
+  `Filtrerad` varchar(10000) NOT NULL,
   `ID` int(11) NOT NULL,
   `User` varchar(10000) NOT NULL,
   `Fulhet` int(11) NOT NULL
