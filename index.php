@@ -60,6 +60,8 @@
 			<br/>
 			<input name="Filtrera" type="submit" />
 		</form>
+        <a Href="php-nudity-detector-master/">bild filter</a><br/>
+        <a Href="text.php">allt som är upladdat</a>
 	</div>
 	
 	<?php
