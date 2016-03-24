@@ -11,7 +11,7 @@ if($_POST['submit'])
 	if ($check==true)
 	{	
 		move_uploaded_file($temp, "bilder/".$name);
-		echo "$name<br>$temp<br>$type<br>Storlek: $size<br>Bredd: $check[0]<br>Höjd: $check[1]";
+		echo "$name<br>$type<br>Storlek: $size<br>Bredd: $check[0]<br>Höjd: $check[1]";
 	}
 	else
 	{
@@ -27,4 +27,17 @@ else
 <html>
 <br>
 <img src="bilder/<?php echo $name;?>"/>
+<br/>
 </html>
+<?php
+$int = 1;
+
+include __DIR__ . '/lib/Autoloader.php';
+
+$quant = new Image_FleshSkinQuantifier(__DIR__ . '/bild2.jpg');
+
+if($quant->isPorn())
+    echo 'This image contains a lot of skin colors, thus might contain some adult content';
+else
+    echo 'This image does not contain many skin colors, thus is not likely to contain adult content';
+?>
