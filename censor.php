@@ -69,7 +69,7 @@
 				//$lowerWord = str_ireplace(array_values($this->leet_replace), array_keys($this->leet_replace), $word);
 				//echo "<br/>" . $lowerWord;
 				if(in_array($lowerWord, $this->badwords)) {
-					$badness = 2;
+					$badness = 1;
 					//echo(" censored \"" . $word . "\"");
 					$outputWord = $this->censorString($word);
 				} else if(!in_array($lowerWord, $this->wordlist)) {
