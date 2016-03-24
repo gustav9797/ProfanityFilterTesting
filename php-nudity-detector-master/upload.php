@@ -35,15 +35,13 @@ $int = 1;
 include __DIR__ . '/lib/Autoloader.php';
 
 $quant = new Image_FleshSkinQuantifier(__DIR__ . '/bilder/'.$name);
+$percentage = $quant->getPornQuantity() * 100;
 
-if($quant->getPornQuantity() * 100>20)
-{
-    echo 'This image contains a lot of skin colors, thus might contain some adult content';
-	echo '<br><br>';
-	echo 'Porn percentage: ' . ($quant->getPornQuantity() * 100);
-}
+if($percentage > 20)
+    echo 'This image is most likely porn.';
 else
-    echo 'This image does not contain many skin colors, thus is not likely to contain adult content';
-	echo '<br><br>';
-	echo 'Porn percentage: ' . ($quant->getPornQuantity() * 100);
+    echo 'This image is most likely not porn.';
+	
+echo '<br><br>';
+echo 'Porn percentage: ' . $percentage;
 ?>
