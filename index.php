@@ -78,7 +78,7 @@
 			echo "<br>";
 			
 			$string = $censor->run($input, true);
-			echo "Clean: " . $string . "<br>";
+			echo "Rent: " . $string . "<br>";
 			
 			$output = $censor->run($input, false);
 			$highest = 0;
@@ -88,7 +88,7 @@
 						$highest = $badness;
 				}
 			}
-			echo "Badness: " . $highest;
+			echo "Fulhet: " . $highest;
 			
 			echo "<br><br>";
 			echo "</div>";
