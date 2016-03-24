@@ -93,4 +93,8 @@ class Image_FleshSkinQuantifier extends Image {
             ? $this->quantifyYCbCr() >= $this->threshold
             : $this->quantifyYCbCr() >= $threshold;
     }
+
+    public function getPornQuantity() {
+        return $this->quantifyYCbCr();
+    }
 }
