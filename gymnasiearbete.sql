@@ -52,7 +52,7 @@ CREATE TABLE `inlagg` (
 -- Dumpning av Data i tabell `inlagg`
 --
 
-INSERT INTO `inlagg` (`Text`, `Filtrerad`, `ID`, `User`, `Fulhet`) VALUES;
+--INSERT INTO `inlagg` (`Text`, `Filtrerad`, `ID`, `User`, `Fulhet`) VALUES;
 
 --
 -- Index för dumpade tabeller
