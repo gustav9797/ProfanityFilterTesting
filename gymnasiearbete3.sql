@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 04 apr 2016 kl 08:40
+-- Tid vid skapande: 22 mars 2016 kl 13:25
 -- Serverversion: 10.1.10-MariaDB
 -- PHP-version: 5.6.19
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Databas: `gymnasiearbete`
 --
+CREATE DATABASE IF NOT EXISTS `gymnasiearbete` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gymnasiearbete`;
 
 -- --------------------------------------------------------
 
@@ -45,6 +47,12 @@ CREATE TABLE `inlagg` (
   `User` varchar(10000) NOT NULL,
   `Fulhet` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumpning av Data i tabell `inlagg`
+--
+
+--INSERT INTO `inlagg` (`Text`, `Filtrerad`, `ID`, `User`, `Fulhet`) VALUES;
 
 --
 -- Index för dumpade tabeller
@@ -75,7 +83,7 @@ ALTER TABLE `bilder`
 -- AUTO_INCREMENT för tabell `inlagg`
 --
 ALTER TABLE `inlagg`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
