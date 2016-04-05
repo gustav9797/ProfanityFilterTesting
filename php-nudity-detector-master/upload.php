@@ -38,6 +38,9 @@ include __DIR__ . '/lib/Autoloader.php';
 $quant = new Image_FleshSkinQuantifier($temp);
 $percentage = $quant->getPornQuantity() * 100;
 
+echo 'Porn percentage: ' . $percentage;
+echo '<br><br>';
+
 if($percentage > 20)
     {
         echo 'This image is most likely porn.';
@@ -87,6 +90,5 @@ else
 	$stmt->execute($params);
     }
 	
-echo '<br><br>';
-echo 'Porn percentage: ' . $percentage;
+
 ?>
