@@ -59,34 +59,18 @@
 			foreach($words as $word) {
 				$badness = 0;
 				$outputWord = $word;
-				//$lowerWord = strtolower(preg_replace("/[^A-Za-z0-9åäöÅÄÖ ]/", '', $word));
 				$lowerWord = $word;
-				foreach($this->leet_replace as $key => $value) {
-					//echo "key " . $key . " value " . $value;
+				foreach($this->leet_replace as $key => $value)
 					$lowerWord = preg_replace('/' . $value . '/i', $key, $lowerWord);
 
-				}
-				//$lowerWord = str_ireplace(array_values($this->leet_replace), array_keys($this->leet_replace), $word);
-				//echo "<br/>" . $lowerWord;
 				if(in_array($lowerWord, $this->badwords)) {
 					$badness = 2;
-					//echo(" censored \"" . $word . "\"");
 					$outputWord = $this->censorString($word);
 				} else if(!in_array($lowerWord, $this->wordlist)) {
-					//TODO: översätt från leet translator till svenska
-					//TODO: om finns med i lista med fula ord, filtrera bort
-					//echo(" |testing " . $lowerWord . "| ");
 					$current = $lowerWord;
-					//echo(" |testing1 " . $lowerWord . "| ");
-					//echo(" |testing2 " . $current . "| ");
 					foreach($this->badwords as $badword) {
-						//echo(" |testing " . $badword . " in " . $word . "| ");
-						//echo(" also " . $current . " with badword " . $badword);
 						while(mb_strpos($current, $badword) !== false) {
-							//echo(" censored \"" . $current . "\"");
-							//echo(" before" . $current);
 							$current = $this->censorStringInString($badword, $current);
-							//echo(" after" . $current);
 							$badness = 1;
 
 						}
@@ -101,7 +85,6 @@
 				} else
 					array_push($output, $outputWord);
 			}
-			//echo("<br>");
 			if(!$censor)
 				return $output;
 			else {
@@ -112,7 +95,6 @@
 	
 				return $outputString;
 			}
-			//TODO: remove empty space at end of output string
 		}
 		
 		private function censorString($string) {
@@ -120,26 +102,18 @@
 		}
 		
 		private function censorStringInString($string, $mother) {
-			//echo(" string \"" . $string . "\"");
-			//echo(" mother \"" . $mother . "\"");
 			$output = $mother;
-			//echo(" in " . $mother);
 			$pos = mb_strpos($mother, $string);
 			if(is_numeric($pos)) {
 				for($i = $pos; $i < mb_strlen($string) + $pos; ++$i) {
-					//echo "asdo " . $i;
-					//echo "length of \"" . $string . "\": " . mb_strlen($string);
-					//$output{$i} = "*";
 					$output = $this->mb_substr_replace($output, $this->censorChar, $i, $i + 1);
 				}
 			} else 
 				echo("There was an issue with the word \"" . $mother . "\" ");
-			//echo(" out " . $output);
 			return $output;
 		}
 		
 		private function mb_substr_replace($output, $replace, $posOpen, $posClose) { 
-			//echo " posopen " . $posOpen . " posClose " . $posClose;
         	return mb_substr($output, 0, $posOpen) . $replace . mb_substr($output, $posClose); 
     	} 
 	}
